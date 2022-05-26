@@ -1,8 +1,8 @@
 export function autoDungeon() {
     if (App.game.gameState === GameConstants.GameState.dungeon) {
         const tempDungeonGrid = DungeonRunner.map.board()
-        for (const x = 0; x < DungeonRunner.map.size; x++) {
-            for (const y = 0; y < DungeonRunner.map.size; y++) {
+        for (let x = 0; x < DungeonRunner.map.size; x++) {
+            for (let y = 0; y < DungeonRunner.map.size; y++) {
                 if (DungeonRunner.map.currentTile().type() === GameConstants.DungeonTile.chest) {
                     DungeonRunner.openChest();
                 } else if (DungeonRunner.map.currentTile().type() === GameConstants.DungeonTile.boss && !DungeonRunner.fightingBoss()) {
