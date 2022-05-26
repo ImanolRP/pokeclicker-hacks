@@ -1,0 +1,25 @@
+{
+  "name": "pokeclicker-hacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImanolRP/pokeclicker-hacks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImanolRP/pokeclicker-hacks/issues"
+  },
+  "homepage": "https://github.com/ImanolRP/pokeclicker-hacks#readme",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
+
