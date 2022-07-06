@@ -5,7 +5,7 @@ const shoppingList = new Map([
     ['xClick', 500],
     ['Lucky_egg', 500],
     ['Token_collector', 500],
-    ['Item_magnet', 500],
+    ['Dowsing_machine', 500],
     ['Pokeball', [0, 1000]],
     ['Greatball', [1, 500]],
     ['Ultraball', [2, 500]],
