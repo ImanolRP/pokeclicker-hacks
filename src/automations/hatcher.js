@@ -2,50 +2,54 @@ function isBreedable(caughtPokemon) {
     return !caughtPokemon.breeding && caughtPokemon.level == 100
 }
 
+function isMatchingName(caughtPokemon) {
+    return BreedingFilters.search.value().test(caughtPokemon.name)
+}
+
 function isOnCategory(caughtPokemon) {
-    if (BreedingController.filter.category() == -1) {
+    if (BreedingFilters.category.value() == -1) {
         // -1 eq All
         return true
     } else {
-        return BreedingController.filter.category() == caughtPokemon.category
+        return BreedingFilters.category.value() == caughtPokemon.category
     }
 }
 
 function isOnRegion(caughtPokemon) {
-    if (BreedingController.filter.region() == -2) {
+    if (BreedingFilters.region.value() == -2) {
         // -2 eq All
         return true
     } else {
-        return BreedingController.filter.region() == PokemonHelper.calcNativeRegion(caughtPokemon.name)
+        return BreedingFilters.region.value() == PokemonHelper.calcNativeRegion(caughtPokemon.name)
     }
 }
 
 function isOnShiny(caughtPokemon) {
-    if (BreedingController.filter.shinyStatus() == -1) {
+    if (BreedingFilters.shinyStatus.value() == -1) {
         // -1 eq All
         return true
     } else {
-        return BreedingController.filter.shinyStatus() == +caughtPokemon.shiny
+        return BreedingFilters.shinyStatus.value() == +caughtPokemon.shiny
     }
 }
 
 function isOnType(caughtPokemon, typeSelector) {
-    if (BreedingController.filter[typeSelector]() == -2) {
+    if (BreedingFilters[typeSelector].value() == -2) {
         // -2 eq All
         return true
-    } else if (BreedingController.filter.type1() == -1 && BreedingController.filter.type2() == -1) {
+    } else if (BreedingFilters.type1.value() == -1 && BreedingFilters.type2.value() == -1) {
         // if both are on none dont return anything
         return false
-    } else if (BreedingController.filter[typeSelector]() == -1) {
+    } else if (BreedingFilters[typeSelector].value() == -1) {
         // -1 eq None, only returns pure type pokemon
         return true
     } else {
         const types = pokemonMap[caughtPokemon.name].type
         if (types.length < 2) {
-            return BreedingController.isPureType(pokemonMap[caughtPokemon.name], BreedingController.filter[typeSelector]())
+            return BreedingFilters.isPureType(pokemonMap[caughtPokemon.name], BreedingFilters[typeSelector].value())
         } else {
             const type = (typeSelector == 'type1') ? types[0] : types[1]
-            return type == BreedingController.filter[typeSelector]()
+            return type == BreedingFilters[typeSelector].value()
         }
     }
 }
@@ -57,8 +61,12 @@ export function autoHatcher() {
     // Now add eggs to empty slots if we can
     while (App.game.breeding.canBreedPokemon()) {
         // Filter the sorted hatchery list of Pokemon based on the parameters set in the Hatchery screen
-        const filteredEggList = PartyController.getHatcherySortedList()
+        PartyController.hatcherySortedList = [...App.game.party.caughtPokemon]
+        const filteredEggList = PartyController.hatcherySortedList
+            .sort(PartyController
+                .compareBy(Settings.getSetting('hatcherySort').observableValue(), Settings.getSetting('hatcherySortDirection').observableValue()))
             .filter((caughtPokemon) => isBreedable(caughtPokemon))
+            .filter((caughtPokemon) => isMatchingName(caughtPokemon))
             .filter((caughtPokemon) => isOnCategory(caughtPokemon))
             .filter((caughtPokemon) => isOnRegion(caughtPokemon))
             .filter((caughtPokemon) => isOnShiny(caughtPokemon))
