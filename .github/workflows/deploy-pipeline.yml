@@ -23,7 +23,7 @@ jobs:
         run: npm install --no-audit --no-fund --no-optinal
         
       - name: Remove previous dist dir for secutiry
-        run: -ls
+        run: ls -l
 
       - name: Build proyect
         run: npm run build
