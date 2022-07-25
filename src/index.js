@@ -19,5 +19,3 @@ appendToggleButton('Shopper', autoShopper);
 appendToggleButton('Coach', autoCoach);
 appendToggleButton('Gymnast', autoGymnast);
 appendToggleButton('Dungeon', autoDungeon);
-
-console.log('test github actions v2')
