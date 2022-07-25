@@ -26,7 +26,7 @@ jobs:
         run: ls -l
 
       - name: Remove previous dist dir for secutiry
-        run: rm -r dir
+        run: rm -r dist
 
       - name: list files2
         run: ls -l
