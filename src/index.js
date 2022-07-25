@@ -8,16 +8,14 @@ import { autoShopper } from '~/automations/shopper'
 import { autoGymnast } from '~/automations/gymnast'
 import { autoCoach } from '~/automations/coach'
 
-function init() {
-    const middleColumn = document.getElementById('middle-column');
-    middleColumn.insertBefore(scriptsPanel, middleColumn.firstChild);
+const middleColumn = document.getElementById('middle-column');
+middleColumn.insertBefore(scriptsPanel, middleColumn.firstChild);
 
-    appendToggleButton('Hatcher', autoHatcher);
-    appendToggleButton('Farmer', autoFarmer);
-    appendToggleButton('Miner', autoMiner);
-    appendToggleButton('Clicker', autoClicker);
-    appendToggleButton('Shopper', autoShopper);
-    appendToggleButton('Coach', autoCoach);
-    appendToggleButton('Gymnast', autoGymnast);
-    appendToggleButton('Dungeon', autoDungeon);
-}
+appendToggleButton('Hatcher', autoHatcher);
+appendToggleButton('Farmer', autoFarmer);
+appendToggleButton('Miner', autoMiner);
+appendToggleButton('Clicker', autoClicker);
+appendToggleButton('Shopper', autoShopper);
+appendToggleButton('Coach', autoCoach);
+appendToggleButton('Gymnast', autoGymnast);
+appendToggleButton('Dungeon', autoDungeon);
