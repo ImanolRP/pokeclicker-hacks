@@ -1,9 +1,8 @@
-name: Deploy pipeline
+name: Build pipeline
 
 on:
-  push:
-    branches:
-      - "github-actions"
+  pull_request:
+    branches: [main]
 
 jobs:
   deploy:
