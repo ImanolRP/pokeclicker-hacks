@@ -35,4 +35,3 @@ jobs:
           git add 'dist'
           git commit -am 'New dist folder made by GitHub-Actions'
           git push
-
