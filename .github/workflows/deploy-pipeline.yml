@@ -20,7 +20,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies 
-        run: npm install
+        run: npm install --no-audit --no-fund --no-optinal
         
+      - name: Remove previous dist dir for secutiry
+        run: -ls
+
       - name: Build proyect
         run: npm run build
+
