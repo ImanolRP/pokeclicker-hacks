@@ -32,7 +32,7 @@ jobs:
         run: ls -l
 
       - name: Build proyect
-        run: npm run 
+        run: npm run build
         
       - name: list files3
         run: ls -l
