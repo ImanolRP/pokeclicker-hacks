@@ -22,15 +22,18 @@ jobs:
       - name: Install dependencies 
         run: npm install --no-audit --no-fund --no-optinal
         
-      - name: Remove previous dist dir for secutiry
-        run: rm --recursive dir
-
       - name: list files1
+        run: ls -l
+
+      - name: Remove previous dist dir for secutiry
+        run: rm -r dir
+
+      - name: list files2
         run: ls -l
 
       - name: Build proyect
         run: npm run 
         
-      - name: list files2
+      - name: list files3
         run: ls -l
 
