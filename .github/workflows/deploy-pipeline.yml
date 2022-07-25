@@ -21,19 +21,16 @@ jobs:
 
       - name: Install dependencies 
         run: npm install --no-audit --no-fund --no-optinal
-        
-      - name: list files1
-        run: ls -l
 
       - name: Remove previous dist dir for secutiry
         run: rm -r dist
 
-      - name: list files2
-        run: ls -l
-
       - name: Build proyect
         run: npm run build
         
-      - name: list files3
-        run: ls -l
+      - name: Commit new dist dir
+        run: |
+          git add 'dist'
+          git commit -am "New dist by pull request"
+          git push
 
