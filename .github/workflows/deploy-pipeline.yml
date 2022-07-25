@@ -30,6 +30,8 @@ jobs:
         
       - name: Commit new dist dir
         run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
           git add 'dist'
           git commit -am "New dist by pull request"
           git push
